@@ -1,0 +1,71 @@
+@model Hobby
+
+<div style="display: inline-block; width:650px;"><h1> Dojo ACtivity Center !</h1></div>
+<div style="display: inline-block; width:250px;float:right;"><h6><a asp-action="Dashboard">Dashboard</a> |<a href="/Logout">Lougout</a></h6></div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>List of Participants </th>
+            <th>Become an Enthuiast</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Description</td>
+           <td>
+
+            @foreach(var x in Model.Joiners)
+                            {
+            
+
+                <p>@x.xUser.Name</p>
+                            }                       
+            </td>
+            
+            
+            <td>
+                @if(Model.UserId != ViewBag.UserId)
+                {
+                    if(Model.Joiners.Any(v => v.UserId == ViewBag.UserId))
+                    {
+                        <a asp-action="Remove" asp-controller="Action" asp-route-ActId="@Model.HobbyId">UNJOIN</a>
+                    }
+                    else
+                    {
+
+                                <select name="level" >
+                                    <option value="Rookie">Rookie</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+                            
+
+                    
+                                            <a asp-action="Action" asp-controller="Action" asp-route-ActId="@Model.HobbyId" asp-route-z="@true">Join</a>
+
+                    }
+                }
+                else
+                {
+                    <a asp-action="Edit" asp-controller="Activity" asp-route-ActId="@Model.HobbyId">EDIT</a><span>|</span>
+                     <a asp-action="Delete" asp-controller="Activity" asp-route-ActId="@Model.HobbyId">DELETE</a> 
+
+                }
+            </td>
+ 
+            
+        </tr>
+
+
+    </tbody>
+
+</table>
+
+     <a asp-action="New"><button>New Hobby</button></a>

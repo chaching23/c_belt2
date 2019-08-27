@@ -1,0 +1,33 @@
+@model User
+
+<div style="display: inline-block; width:350px;">
+    <h1>Register</h1>
+    <form asp-action="Register" asp-controller="Home" method="post">
+        
+        <span class="error" asp-validation-for="Name"></span>
+        <br>
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" style="width:300px">
+
+
+        
+
+        <span class="error" asp-validation-for="Username"></span>
+        <br>
+        <label asp-for="Username"></label>
+        <input  class="form-control" asp-for="Username" style="width:300px">
+
+        <span class="error" asp-validation-for="Password"></span>
+        <br>
+        <label asp-for="Password"></label>
+        <input type="password" class="form-control" asp-for="Password" style="width:300px">
+
+        <span class="error" asp-validation-for="Confirm"></span>
+        <br>
+        <label asp-for="Confirm">Confirm Password</label>
+        <input type="password" class="form-control" asp-for="Confirm" style="width:300px">
+        <br>
+        <button class="btn btn-primary">Sign Up</button>
+    </form>
+
+</div>

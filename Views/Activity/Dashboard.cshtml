@@ -1,0 +1,35 @@
+@model List<Hobby>
+    
+<div style="display: inline-block; width:650px;"><h1>Hobbies!</h1></div>
+<div style="display: inline-block; width:250px;float:right;"><h6>Welcome,  </h6><h6><a asp-action="Dashboard">Dashboard</a> |<a href="/Logout">Lougout</a></h6></div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th># of Enthusiant </th>
+
+     
+        </tr>
+    </thead>
+    <tbody>
+            @foreach(var x in Model)
+    {
+
+        <tr>
+            <td><a asp-action="Show" asp-route-ActId="@x.HobbyId">@x.Name   </a></td>
+
+            <td>@x.Joiners.Count</td>
+
+        </tr>
+    }
+
+
+
+
+    </tbody>
+
+</table>
+
+     <a asp-action="New" style="float:right;"><button>Create a Hobby</button></a>
